@@ -1,0 +1,59 @@
+expenses = []
+
+def add_expense():
+    name = input("Enter expense name: ")
+    amount = float(input("Enter amount: ₹"))
+    category = input("Enter category: ")
+
+    expense = {
+        "name": name,
+        "amount": amount,
+        "category": category
+    }
+
+    expenses.append(expense)
+    print("✅ Expense added successfully!\n")
+
+
+def show_expenses():
+    if not expenses:
+        print("No expenses recorded.\n")
+        return
+
+    print("\n------ EXPENSES ------")
+    total = 0
+
+    for i, expense in enumerate(expenses, 1):
+        print(
+            f"{i}. {expense['name']} | "
+            f"₹{expense['amount']:.2f} | "
+            f"{expense['category']}"
+        )
+        total += expense["amount"]
+
+    print("----------------------")
+    print(f"Total Expense: ₹{total:.2f}\n")
+
+
+def main():
+    while True:
+        print("===== EXPENSE TRACKER =====")
+        print("1. Add Expense")
+        print("2. Show Expenses")
+        print("3. Exit")
+
+        choice = input("Enter your choice: ")
+
+        if choice == "1":
+            add_expense()
+        elif choice == "2":
+            show_expenses()
+        elif choice == "3":
+            print("Thank you!")
+            break
+        else:
+            print("❌ Invalid choice\n")
+
+
+if __name__ == "__main__":
+    main()
